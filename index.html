@@ -1,0 +1,155 @@
+<html>
+<head>
+    <title>3D Card</title>
+    <style>
+        body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    perspective: 1000px;
+}
+.container {
+    width: 70%;
+    /*background: yellow;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card {
+    background: none;
+    width: 35rem;
+    border-radius: 30px;
+    box-shadow: 0px 20px 40px gray, 0px 0px 50px grey;
+    height: 80vh;
+    padding: 0rem 5rem;
+    transform-style: preserve-3d;
+}
+.sneaker img {
+    width: 25rem;
+    transition: 1s ease;
+}
+.sneaker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38vh;
+}
+.circle {
+    width: 20rem;
+    height: 20rem;
+    background: linear-gradient(to left, rgb(88, 0, 88), rgb(84, 84, 255));
+    border-radius: 50%;
+    position: absolute;
+    z-index: -1;
+}
+.info h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    transition: 1s ease;
+}
+.info h3 {
+    font-size: 1.3rem;
+    font-weight: lighter;
+    color: #585858;
+    padding: 0.5rem;
+    transition: 1s ease;
+}
+.sizes {
+    display: flex;
+    justify-content: space-between;
+    transition: 1s ease;
+}
+.sizes button {
+    padding: 0.5rem 2rem;
+    background: white;
+    border: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, .4);
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+}
+#act {
+    background: #585858;
+    color: white;
+}
+.purchase {
+    margin-top: 5rem;
+    transition: all 0.75s ease-out
+}
+#purhd {
+    padding: 0.5rem 2rem;
+    border: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, .4);
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    position: relative;
+    top: -40px;
+    width: 100%;
+    background: #f54642;
+    color: white;
+}
+    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="sneaker">
+                <div class="circle"></div>
+                <img src="shoeim.png">
+            </div>
+            <div class="info">
+                <h1>Adidas XZ</h1>
+                <h3>
+                    FUTURE-READY TRAINERS WITH WRAPPED BOOST FOR EXCEPTION COMFORT.
+                </h3>
+                <div class="sizes">
+                    <button>39</button>
+                    <button>40</button>
+                    <button id="act" class="active">41</button>
+                    <button>42</button>
+                </div>
+                <div class="purchase">
+                    <button id="purhd">
+                        Purchase
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    var container = document.querySelector(".container");
+var card = document.querySelector(".card");
+var shoe = document.querySelector(".sneaker img")
+var texthead = document.querySelector(".info h1")
+var texththere = document.querySelector(".info h3")
+var thebuttons = document.querySelector(".sizes")
+var buttonpurchase = document.querySelector(".purchase")
+document.addEventListener("mousemove", (e)=> {
+    card.style.transform = `rotateX(${(window.innerWidth/2-e.pageX)/25}deg) rotateY(${(window.innerHeight/2-e.pageY)/25}deg)`;
+})
+document.addEventListener("mouseenter", (e)=>{
+    card.style.transition = `none`;
+    shoe.style.transform = `translateZ(100px) rotate(-45deg)`;
+    texthead.style.transform = `translateZ(80px)`;
+    texththere.style.transform = `translateZ(60px)`;
+    thebuttons.style.transform = `translateZ(40px)`;
+    buttonpurchase.style.transform = `translateZ(40px)`;
+})
+document.addEventListener("mouseleave", (e)=> {
+    card.style.transition = `1s ease`;
+    card.style.transform = `rotate(0deg)`;
+    shoe.style.transform = `translateZ(0px)`;
+    texthead.style.transform = `translateZ(0px)`;
+    texththere.style.transform = `translateZ(0px)`;
+    thebuttons.style.transform = `translateZ(0px)`;
+    buttonpurchase.style.transform = `translateZ(0px)`;
+})
+</script>    
+</body>
+</html>
